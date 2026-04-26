@@ -20,10 +20,10 @@ const caveat = Caveat({
 })
 
 export const metadata: Metadata = {
-  title: "Cliste - AI Automation for Enterprise",
+  title: "PayPoint Solution | Payment Processing",
   description:
     "Transform your business with intelligent AI automation solutions. Empower your organization to operate at the speed of thought.",
-  generator: "v0.app",
+  generator: "PayPoint Solution",
 }
 
 export default function RootLayout({
