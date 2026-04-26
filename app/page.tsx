@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/hero-section"
 import { ProblemSolutionSection } from "@/components/problem-solution-section"
 import Aurora from "@/components/Aurora"
 import { FeaturesSection } from "@/components/features-section"
+import { PaymentSolutionsSection } from "@/components/payment-solutions-section"
 import { AITeamSection } from "@/components/ai-team-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { MatthewSection } from "@/components/matthew-section"
@@ -22,6 +23,7 @@ export default function HomePage() {
           <HeroSection />
           <ProblemSolutionSection />
           <FeaturesSection />
+          <PaymentSolutionsSection />
           <AITeamSection />
           <TestimonialsSection />
           <MatthewSection />

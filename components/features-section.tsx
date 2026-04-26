@@ -51,6 +51,7 @@ const services = [
 export function FeaturesSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const [showAllMobile, setShowAllMobile] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -132,10 +133,11 @@ export function FeaturesSection() {
           >
             {services.map((service, index) => {
               const Icon = service.icon
+              const isHiddenOnMobile = !showAllMobile && index >= 3
               return (
                 <div
                   key={index}
-                  className={`group transition-all duration-1000 ${service.size === "large" ? "md:col-span-2" : ""}`}
+                  className={`group transition-all duration-1000 ${service.size === "large" ? "md:col-span-2" : ""} ${isHiddenOnMobile ? 'hidden md:block' : 'block'}`}
                   style={{
                     transitionDelay: isVisible ? `${300 + index * 100}ms` : "0ms",
                   }}
@@ -157,6 +159,17 @@ export function FeaturesSection() {
               )
             })}
           </div>
+
+          {/* Mobile Show More Button for Features */}
+          <div className="mt-8 flex justify-center md:hidden transition-all duration-500 relative z-20">
+            <button
+              onClick={() => setShowAllMobile(!showAllMobile)}
+              className="px-6 py-3 rounded-full text-slate-700 bg-white border border-slate-200 shadow-sm text-sm font-medium hover:bg-slate-50 transition-colors"
+            >
+              {showAllMobile ? "Show Less" : "Show All Features"}
+            </button>
+          </div>
+
         </div>
       </div>
     </section>
