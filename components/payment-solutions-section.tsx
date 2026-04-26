@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { MonitorSmartphone, CreditCard, Terminal } from "lucide-react"
+import { MonitorSmartphone, CreditCard, Terminal, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { posSystems, gateways } from "@/lib/partners-data"
 
@@ -54,9 +54,9 @@ export function PaymentSolutionsSection() {
         <div className={`flex flex-wrap items-center justify-center gap-3 mb-16 transition-all duration-1000 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
           <button
             onClick={() => setActiveTab("pos")}
-            className={`px-6 py-3 rounded-full text-sm font-medium transition-all flex items-center justify-center border ${activeTab === "pos"
+            className={`px-6 py-3 rounded-full text-sm font-medium transition-all flex items-center justify-center border active:scale-95 touch-manipulation ${activeTab === "pos"
                 ? "bg-white/15 text-white border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                : "bg-white/5 text-gray-400 hover:bg-white/10 border-transparent"
+                : "bg-white/5 text-gray-400 md:hover:bg-white/10 border-transparent"
               }`}
           >
             <MonitorSmartphone className="w-4 h-4 mr-2" />
@@ -64,9 +64,9 @@ export function PaymentSolutionsSection() {
           </button>
           <button
             onClick={() => setActiveTab("gateways")}
-            className={`px-6 py-3 rounded-full text-sm font-medium transition-all flex items-center justify-center border ${activeTab === "gateways"
+            className={`px-6 py-3 rounded-full text-sm font-medium transition-all flex items-center justify-center border active:scale-95 touch-manipulation ${activeTab === "gateways"
                 ? "bg-white/15 text-white border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                : "bg-white/5 text-gray-400 hover:bg-white/10 border-transparent"
+                : "bg-white/5 text-gray-400 md:hover:bg-white/10 border-transparent"
               }`}
           >
             <CreditCard className="w-4 h-4 mr-2" />
@@ -74,9 +74,9 @@ export function PaymentSolutionsSection() {
           </button>
           <button
             onClick={() => setActiveTab("equipment")}
-            className={`px-6 py-3 rounded-full text-sm font-medium transition-all flex items-center justify-center border ${activeTab === "equipment"
+            className={`px-6 py-3 rounded-full text-sm font-medium transition-all flex items-center justify-center border active:scale-95 touch-manipulation ${activeTab === "equipment"
                 ? "bg-white/15 text-white border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                : "bg-white/5 text-gray-400 hover:bg-white/10 border-transparent"
+                : "bg-white/5 text-gray-400 md:hover:bg-white/10 border-transparent"
               }`}
           >
             <Terminal className="w-4 h-4 mr-2" />
@@ -97,9 +97,9 @@ export function PaymentSolutionsSection() {
                 {posSystems.map((sys, index) => {
                   const isHidden = !showAllPosMobile && index >= 3
                   return (
-                    <Link href={`/partners/${sys.id}`} key={sys.id} className={`group ${isHidden ? 'hidden md:block' : 'block'}`}>
-                      <div className="relative bg-white/[0.03] hover:bg-white/[0.06] hover:scale-[1.02] border border-white/10 hover:border-emerald-400/30 rounded-2xl p-6 backdrop-blur-md transition-all duration-300 flex flex-col h-full overflow-hidden shadow-lg hover:shadow-emerald-900/20 cursor-pointer">
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <Link href={`/partners/${sys.id}`} key={sys.id} className={`group ${isHidden ? 'hidden md:block' : 'block'} touch-manipulation`}>
+                      <div className="relative bg-white/[0.03] md:hover:bg-white/[0.06] md:hover:scale-[1.02] border border-white/10 md:hover:border-emerald-400/30 rounded-2xl p-6 backdrop-blur-md transition-all duration-300 flex flex-col h-full overflow-hidden shadow-lg md:hover:shadow-emerald-900/20 cursor-pointer active:scale-95 active:bg-white/[0.05]">
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-500" />
 
                         <div className="flex items-center gap-4 mb-4 relative z-10">
                           {sys.logo ? (
@@ -116,6 +116,12 @@ export function PaymentSolutionsSection() {
                         <p className="text-gray-400 text-sm leading-relaxed relative z-10 flex-grow">
                           {sys.desc}
                         </p>
+                        
+                        {/* Interactive View Details Indicator */}
+                        <div className="mt-6 flex items-center justify-between relative z-10 text-emerald-400/80 group-hover:text-emerald-400 font-medium text-sm transition-colors">
+                          <span>View Details</span>
+                          <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                        </div>
                       </div>
                     </Link>
                   )
@@ -144,9 +150,9 @@ export function PaymentSolutionsSection() {
                 {gateways.map((gw, index) => {
                   const isHidden = !showAllGatewaysMobile && index >= 3
                   return (
-                    <Link href={`/partners/${gw.id}`} key={gw.id} className={`group ${isHidden ? 'hidden md:block' : 'block'}`}>
-                      <div className="relative bg-white/[0.03] hover:bg-white/[0.06] hover:scale-[1.02] border border-white/10 hover:border-emerald-400/30 rounded-2xl p-6 backdrop-blur-md transition-all duration-300 flex flex-col h-full overflow-hidden shadow-lg hover:shadow-emerald-900/20 cursor-pointer">
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <Link href={`/partners/${gw.id}`} key={gw.id} className={`group ${isHidden ? 'hidden md:block' : 'block'} touch-manipulation`}>
+                      <div className="relative bg-white/[0.03] md:hover:bg-white/[0.06] md:hover:scale-[1.02] border border-white/10 md:hover:border-emerald-400/30 rounded-2xl p-6 backdrop-blur-md transition-all duration-300 flex flex-col h-full overflow-hidden shadow-lg md:hover:shadow-emerald-900/20 cursor-pointer active:scale-95 active:bg-white/[0.05]">
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-500" />
 
                         <div className="flex justify-between items-start mb-4 relative z-10">
                           <div className="flex items-center gap-4">
@@ -168,6 +174,12 @@ export function PaymentSolutionsSection() {
                         <p className="text-gray-400 text-sm leading-relaxed relative z-10 flex-grow mt-2">
                           {gw.desc}
                         </p>
+                        
+                        {/* Interactive View Details Indicator */}
+                        <div className="mt-6 flex items-center justify-between relative z-10 text-emerald-400/80 group-hover:text-emerald-400 font-medium text-sm transition-colors">
+                          <span>View Details</span>
+                          <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                        </div>
                       </div>
                     </Link>
                   )
@@ -194,9 +206,9 @@ export function PaymentSolutionsSection() {
               </div>
 
               <div className="max-w-2xl mx-auto">
-                <Link href="/partners/dejavoo-pos" className="block group">
-                  <div className="relative bg-white/[0.03] hover:bg-white/[0.06] hover:scale-[1.02] border border-white/10 hover:border-emerald-400/30 rounded-2xl p-8 backdrop-blur-md transition-all duration-300 overflow-hidden text-center cursor-pointer shadow-lg hover:shadow-emerald-900/20">
-                    <div className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <Link href="/partners/dejavoo-pos" className="block group touch-manipulation">
+                  <div className="relative bg-white/[0.03] md:hover:bg-white/[0.06] md:hover:scale-[1.02] border border-white/10 md:hover:border-emerald-400/30 rounded-2xl p-8 backdrop-blur-md transition-all duration-300 overflow-hidden text-center cursor-pointer shadow-lg md:hover:shadow-emerald-900/20 active:scale-95 active:bg-white/[0.05]">
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-500" />
 
                     <div className="w-20 h-20 mx-auto rounded-2xl bg-white flex items-center justify-center p-3 mb-6 relative z-10 shadow-xl">
                       <img src="https://www.google.com/s2/favicons?domain=dejavoo.net&sz=128" alt="Dejavoo" className="w-full h-full object-contain" />
@@ -206,6 +218,12 @@ export function PaymentSolutionsSection() {
                     <p className="text-gray-400 text-base leading-relaxed relative z-10">
                       Straightforward, no-frills credit card terminals. Perfect for businesses that don&apos;t need a full POS — just reliable card acceptance.
                     </p>
+                    
+                    {/* Interactive View Details Indicator */}
+                    <div className="mt-6 flex items-center justify-center gap-2 relative z-10 text-emerald-400/80 group-hover:text-emerald-400 font-medium text-sm transition-colors">
+                      <span>View Details</span>
+                      <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
                 </Link>
               </div>

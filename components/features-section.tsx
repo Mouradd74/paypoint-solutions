@@ -142,9 +142,9 @@ export function FeaturesSection() {
                     transitionDelay: isVisible ? `${300 + index * 100}ms` : "0ms",
                   }}
                 >
-                  <div className="bg-white rounded-2xl p-6 sm:p-8 h-full shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-slate-200 hover:border-slate-300">
+                  <div className="bg-white rounded-2xl p-6 sm:p-8 h-full shadow-lg md:hover:shadow-2xl transition-all duration-500 md:hover:-translate-y-2 border border-slate-200 md:hover:border-slate-300">
                     <div className="mb-6">
-                      <div className="h-14 w-14 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 group-hover:bg-slate-900 group-hover:text-white transition-all duration-300">
+                      <div className="h-14 w-14 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 md:group-hover:bg-slate-900 md:group-hover:text-white transition-all duration-300">
                         <Icon className="h-7 w-7" />
                       </div>
                     </div>
