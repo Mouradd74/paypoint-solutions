@@ -39,8 +39,8 @@ const footerLinks: FooterSection[] = [
   {
     label: "Contact",
     links: [
-      { title: "[Phone — coming soon]", href: "#contact" },
-      { title: "[Email — coming soon]", href: "#contact" },
+      { title: "+1 (830) 318-3250", href: "#contact" },
+      { title: "paypointsolutions1@gmail.com", href: "#contact" },
       { title: "Seguin, Texas", href: "#contact" },
       { title: "@feeassasintx", href: "https://instagram.com/feeassasintx" },
     ],

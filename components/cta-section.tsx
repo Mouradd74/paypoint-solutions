@@ -191,7 +191,7 @@ export function CTASection() {
             <h3 className="text-xl font-bold text-white">Reach out directly</h3>
             <div className="space-y-4">
               <ContactRow icon={MapPin} text="Seguin, Texas" />
-              <ContactRow icon={Phone} text="[Phone — coming soon]" />
+              <ContactRow icon={Phone} text="+1 (830) 318-3250" />
               <ContactRow
                 icon={Instagram}
                 text="@feeassasintx"
