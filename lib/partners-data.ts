@@ -72,7 +72,7 @@ export const posSystems: Partner[] = [
     desc: "Cloud-based POS built for high-volume bars, restaurants, and coffee shops. Provides hands-on training, detailed real-time metrics for inventory, sales, and employee management.",
     longDescription: "RPOWER was engineered exactly for high-speed hospitality. Coffee shops, busy bars, and full-service restaurants rely on RPOWER to execute intense rush hours, supported by hands-on training and real-time live business metrics.",
     logo: getLogo("rpowerglobal.com"),
-    specialties: ["High-speed bar operations", "Hands-on implementation training", "Live real-time reporting", "Tab Pre-authorization"],
+    specialties: ["24/7 Support", "End of day close in minutes not hours","QR code ordering","High-speed bar operations", "Hands-on implementation training", "Live real-time reporting", "Tab Pre-authorization"],
     images: ["/images/Rpowe1.webp", "/images/Rpowe2.webp", "/images/Rpowe3.webp"],
   },
   {
@@ -81,7 +81,7 @@ export const posSystems: Partner[] = [
     desc: "Reliable POS for restaurants and retail. Supports up to 50,000 SKUs — perfect for clothing boutiques, coffee shops, and busy storefronts.",
     longDescription: "PAYSPOS bridges the gap between detailed restaurant metrics and immense retail SKU catalogs. Serving up to 50,000 unique SKUs easily, this point of sale ensures that busy storefronts and boutiques can manage massive inventories without slowdowns.",
     logo: "",
-    specialties: ["Handles 50,000+ SKUs", "Perfect for Boutiques & Coffee Shops", "Advanced Modifier Tracking"],
+    specialties: ["Handles 50,000+ SKUs", "Perfect for Boutiques & Coffee Shops", "Advanced Modifier Tracking","24/7 Support","5 minute response time","Employee Management","Built for your restaurant"],
     images: ["/images/Payspos1.webp"],
   },
   {

@@ -102,7 +102,7 @@ export function HeroSection() {
 
         {/* Business Type Strip — replaces company logo marquee */}
         <div className="text-center px-4 overflow-hidden animate-fade-in-trust">
-          <p className="text-sm text-white/70 mb-4">Proudly serving local businesses in Seguin, TX</p>
+          <p className="text-sm text-white/70 mb-4">Proudly serving local businesses in Seguin, TX And Beyond</p>
           <div className="relative overflow-hidden w-full max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-2 flex-wrap">
               {["Restaurants", "Food Trucks", "Retail Shops", "Salons", "Auto Shops"].map((type, i) => (
@@ -111,7 +111,7 @@ export function HeroSection() {
                   {type}
                 </span>
               ))}
-              <span className="text-white/30 ml-2 text-sm">in Seguin, TX</span>
+              <span className="text-white/30 ml-2 text-sm">And Much More</span>
             </div>
           </div>
         </div>
