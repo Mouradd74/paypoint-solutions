@@ -33,7 +33,7 @@ export default function PartnerPage({ params }: { params: { id: string } }) {
             {/* Context/Back Button */}
             <Link 
               href="/#solutions" 
-              className="inline-flex items-center text-gray-400 hover:text-white transition-colors mb-12 text-sm"
+              className="inline-flex items-center text-gray-400 hover:text-white transition-colors mb-12 text-sm touch-manipulation active:scale-95"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Solutions
@@ -106,7 +106,7 @@ export default function PartnerPage({ params }: { params: { id: string } }) {
                       className="group relative bg-white/[0.02] border border-white/10 rounded-3xl overflow-hidden backdrop-blur-sm aspect-square flex items-center justify-center p-8 hover:border-emerald-400/30 hover:bg-white/[0.04] transition-all duration-300 shadow-xl"
                     >
                       {/* Subtle background glow effect on hover */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 pointer-events-none"></div>
                       
                       <img 
                         src={imgSrc} 

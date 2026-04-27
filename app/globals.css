@@ -117,6 +117,12 @@
 }
 
 @layer base {
+  button, a, [role="button"], [role="tab"] {
+    touch-action: manipulation;
+  }
+}
+
+@layer base {
   * {
     @apply border-border outline-ring/50;
   }

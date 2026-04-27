@@ -146,39 +146,40 @@ export function ROICalculatorSection() {
               <h4 className="text-center text-gray-400 text-xs sm:text-sm mb-6 uppercase tracking-[0.2em] font-medium">
                 Industry Specific Requirements
               </h4>
-              <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
-                <button
-                  onClick={() => setActiveTab("ecommerce")}
-                  className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all flex items-center justify-center ${activeTab === "ecommerce" ? "bg-white/15 text-white border-white/20 shadow-lg shadow-black/20" : "bg-white/5 text-gray-400 hover:bg-white/10 border-transparent"} border`}
-                >
-                  <ShoppingCart className="w-4 h-4 mr-2" />
-                  E-Commerce
-                </button>
-                <button
-                  onClick={() => setActiveTab("markets")}
-                  className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all flex items-center justify-center ${activeTab === "markets" ? "bg-white/15 text-white border-white/20 shadow-lg shadow-black/20" : "bg-white/5 text-gray-400 hover:bg-white/10 border-transparent"} border`}
-                >
-                  <Store className="w-4 h-4 mr-2" />
-                  Markets
-                </button>
-                <button
-                  onClick={() => setActiveTab("supermarkets")}
-                  className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all flex items-center justify-center ${activeTab === "supermarkets" ? "bg-white/15 text-white border-white/20 shadow-lg shadow-black/20" : "bg-white/5 text-gray-400 hover:bg-white/10 border-transparent"} border`}
-                >
-                  <Store className="w-4 h-4 mr-2" />
-                  Supermarkets
-                </button>
-                <button
-                  onClick={() => setActiveTab("Other Stores")}
-                  className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all flex items-center justify-center ${activeTab === "Other Stores"
-                    ? "bg-white/15 text-white border-white/20 shadow-lg shadow-black/20"
-                    : "bg-white/5 text-gray-400 hover:bg-white/10 border-transparent"
-                    } border`}
-                >
-                  <Store className="w-4 h-4 mr-2" />
-                  Other Stores
-                </button>
-              </div>
+              <fieldset className="mb-6">
+                <legend className="sr-only">Select industry</legend>
+                <div className="flex flex-wrap items-center justify-center gap-2">
+                  {[
+                    { value: "ecommerce" as const, label: "E-Commerce", Icon: ShoppingCart },
+                    { value: "markets" as const, label: "Markets", Icon: Store },
+                    { value: "supermarkets" as const, label: "Supermarkets", Icon: Store },
+                    { value: "Other Stores" as const, label: "Other Stores", Icon: Store },
+                  ].map(({ value, label, Icon }) => {
+                    const id = `roi-tab-${value.replace(/\s+/g, "-").toLowerCase()}`
+                    const checked = activeTab === value
+
+                    return (
+                      <label
+                        key={value}
+                        htmlFor={id}
+                        className={`px-4 py-2.5 rounded-full text-sm font-medium flex items-center justify-center border cursor-pointer select-none touch-manipulation active:scale-[0.98] ${checked ? "bg-white/15 text-white border-white/20" : "bg-white/5 text-gray-400 border-transparent"}`}
+                      >
+                        <input
+                          id={id}
+                          type="radio"
+                          name="roi-industry"
+                          value={value}
+                          checked={checked}
+                          onChange={() => setActiveTab(value)}
+                          className="sr-only"
+                        />
+                        <Icon className="w-4 h-4 mr-2" />
+                        {label}
+                      </label>
+                    )
+                  })}
+                </div>
+              </fieldset>
 
               <div className="bg-white/[0.02] border border-white/5 rounded-xl p-5 min-h-[90px] flex items-center justify-center">
                 {activeTab === "ecommerce" && (
