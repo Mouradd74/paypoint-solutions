@@ -1,16 +1,17 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { MonitorSmartphone, CreditCard, Terminal, ArrowRight } from "lucide-react"
+import { MonitorSmartphone, CreditCard, Terminal, ArrowRight, Smartphone } from "lucide-react"
 import Link from "next/link"
-import { posSystems, gateways } from "@/lib/partners-data"
+import { posSystems, gateways, mobilePayments } from "@/lib/partners-data"
 
 export function PaymentSolutionsSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
-  const [activeTab, setActiveTab] = useState<"pos" | "gateways" | "equipment">("pos")
+  const [activeTab, setActiveTab] = useState<"pos" | "gateways" | "mobile" | "equipment">("pos")
   const [showAllPosMobile, setShowAllPosMobile] = useState(false)
   const [showAllGatewaysMobile, setShowAllGatewaysMobile] = useState(false)
+  const [showAllMobilePaymentsMobile, setShowAllMobilePaymentsMobile] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -57,6 +58,7 @@ export function PaymentSolutionsSection() {
             {[
               { value: "pos" as const, label: "POS Systems", Icon: MonitorSmartphone },
               { value: "gateways" as const, label: "Gateways", Icon: CreditCard },
+              { value: "mobile" as const, label: "Mobile Payments", Icon: Smartphone },
               { value: "equipment" as const, label: "Equipment", Icon: Terminal },
             ].map(({ value, label, Icon }) => {
               const id = `solutions-tab-${value}`
@@ -106,6 +108,10 @@ export function PaymentSolutionsSection() {
                           {sys.logo ? (
                             <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center p-2 shrink-0 shadow-inner">
                               <img src={sys.logo} alt={sys.name} className="w-full h-full object-contain" />
+                            </div>
+                          ) : sys.images?.[0] ? (
+                            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center p-1 shrink-0 shadow-inner overflow-hidden">
+                              <img src={sys.images[0]} alt={sys.name} className="w-full h-full object-cover" />
                             </div>
                           ) : (
                             <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
@@ -161,6 +167,10 @@ export function PaymentSolutionsSection() {
                               <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center p-2 shrink-0 shadow-inner">
                                 <img src={gw.logo} alt={gw.name} className="w-full h-full object-contain" />
                               </div>
+                            ) : gw.images?.[0] ? (
+                              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center p-1 shrink-0 shadow-inner overflow-hidden">
+                                <img src={gw.images[0]} alt={gw.name} className="w-full h-full object-cover" />
+                              </div>
                             ) : (
                               <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
                                 <span className="text-white font-bold">{gw.name.charAt(0)}</span>
@@ -194,6 +204,59 @@ export function PaymentSolutionsSection() {
                   className="px-6 py-3 rounded-full text-white bg-white/10 border border-white/20 text-sm font-medium hover:bg-white/20 transition-colors"
                 >
                   {showAllGatewaysMobile ? "Show Less" : "Show All Gateways"}
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Mobile Payments Tab */}
+          {activeTab === "mobile" && (
+            <div className="space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
+              <div className="text-center mb-8">
+                <p className="text-gray-300">Mobile-first payment options for on-the-go sales, events, curbside, and field service teams.</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                {mobilePayments.map((partner, index) => {
+                  const isHidden = !showAllMobilePaymentsMobile && index >= 3
+                  return (
+                    <Link href={`/partners/${partner.id}`} key={partner.id} className={`group ${isHidden ? 'hidden md:block' : 'block'} touch-manipulation relative z-20`}>
+                      <div className="relative bg-white/[0.03] md:hover:bg-white/[0.06] md:hover:scale-[1.02] border border-white/10 md:hover:border-emerald-400/30 rounded-2xl p-6 backdrop-blur-md transition-[transform,background-color,border-color,box-shadow] duration-200 ease-out flex flex-col h-full overflow-hidden shadow-lg md:hover:shadow-emerald-900/20 cursor-pointer active:scale-95 active:bg-white/[0.05]">
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                        <div className="flex items-center gap-4 mb-4 relative z-10">
+                          {partner.logo ? (
+                            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center p-2 shrink-0 shadow-inner">
+                              <img src={partner.logo} alt={partner.name} className="w-full h-full object-contain" />
+                            </div>
+                          ) : partner.images?.[0] ? (
+                            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center p-1 shrink-0 shadow-inner overflow-hidden">
+                              <img src={partner.images[0]} alt={partner.name} className="w-full h-full object-cover" />
+                            </div>
+                          ) : (
+                            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
+                              <span className="text-white font-bold text-lg">{partner.name.charAt(0)}</span>
+                            </div>
+                          )}
+                          <h3 className="text-xl font-semibold text-white group-hover:text-emerald-400 transition-colors">{partner.name}</h3>
+                        </div>
+                        <p className="text-gray-400 text-sm leading-relaxed relative z-10 flex-grow">{partner.desc}</p>
+
+                        <div className="mt-6 flex items-center justify-between relative z-10 text-emerald-400/80 group-hover:text-emerald-400 font-medium text-sm transition-colors">
+                          <span>View Details</span>
+                          <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      </div>
+                    </Link>
+                  )
+                })}
+              </div>
+
+              <div className="mt-8 flex justify-center md:hidden">
+                <button
+                  onClick={() => setShowAllMobilePaymentsMobile(!showAllMobilePaymentsMobile)}
+                  className="px-6 py-3 rounded-full text-white bg-white/10 border border-white/20 text-sm font-medium hover:bg-white/20 transition-colors"
+                >
+                  {showAllMobilePaymentsMobile ? "Show Less" : "Show All Mobile Payment Partners"}
                 </button>
               </div>
             </div>

@@ -37,34 +37,34 @@ export const posSystems: Partner[] = [
     longDescription: "Dejavoo is an industry-leading provider for reliable, straightforward credit card terminals. If you don't need a bloated POS and just need to securely process transactions all day without a glitch, Dejavoo has the perfect straightforward hardware.",
     logo: getLogo("dejavoo.net"),
     specialties: ["Standalone Credit Card Terminals", "Reliable Uptime", "Zero-Bloat Software"],
-    images: ["/images/Dejavoo1.webp"],
+    images: ["/images/Dejavoo1.JPG"],
   },
   {
     id: "quickv",
-    name: "Quickv",
-    desc: "Fast and flexible POS for quick service businesses.",
+    name: "Quickvee",
+    desc: "Quickvee POS is a specialized, all-in-one point-of-sale system built specifically for smoke shops, vape stores, cigar shops, and CBD retailers. Unlike generic POS systems, Quickvee is designed to handle the unique challenges of age-restricted businesses—helping you stay compliant, organized, and profitable.",
     longDescription: "Quickv prioritizes speed for quick-service businesses. Its streamlined UI ensures that cashiers can handle high volumes of customers efficiently while sending orders to preparation zones continuously.",
     logo: "",
     specialties: ["Quick Service Workflow", "Speedy UI", "Kitchen Display Integrations"],
-    images: [],
+    images: ["/images/Quickvee1.JPG"],
   },
   {
     id: "korona",
     name: "KORONA",
-    desc: "Cloud-based POS ideal for high-volume retail with robust inventory tracking.",
+    desc: "KORONA POS is a flexible, cloud-based POS system designed for retail, QSR, and ticketing businesses—built to simplify inventory, sales, and multi-location operations with powerful reporting and customization.",
     longDescription: "KORONA is tailor-made for high-volume retail environments. It provides unmatched capabilities when dealing with immense SKUs, multi-location inventory logistics, and deep enterprise reporting metrics.",
     logo: getLogo("koronapos.com"),
     specialties: ["Multi-location sync", "High-volume retail", "Deep Analytics", "Gift Card & Loyalty"],
-    images: [],
+    images: ["/images/Korona1.JPG"],
   },
   {
     id: "kwick-pos",
     name: "Kwick POS",
-    desc: "Intuitive POS designed for restaurants and food service.",
+    desc: "KwickPOS is a cloud-based POS system designed for specialty and high-risk retail, combining inventory, compliance tools, and integrated payments in one platform.",
     longDescription: "Kwick POS delivers specialized features crafted entirely for dining. From precise table mapping to multi-kitchen-printer configurations, it keeps your front of house and back of house universally synced up.",
     logo: "",
     specialties: ["Table Mapping", "Kitchen Synchronization", "Server Performance Tracking"],
-    images: [],
+    images: ["/images/Kwick.JPG"],
   },
   {
     id: "rpower",
@@ -87,11 +87,11 @@ export const posSystems: Partner[] = [
   {
     id: "skytab",
     name: "Skytab",
-    desc: "Feature-rich POS by Shift4 — great for full-service restaurants with tableside ordering, online ordering integration, and detailed reporting.",
+    desc: "SkyTab POS — trusted by Jon Taffer — handles everything from payments to online orders, staff management, and real-time reporting. Perfect for restaurants, bars, and high-volume businesses that want to move faster and increase profits",
     longDescription: "Skytab, powered by Shift4, focuses on bringing mobility directly to the customer's table. Equip waitstaff with tableside ordering hardware that instantly connects with online orders to supercharge full-service delivery times.",
     logo: getLogo("skytab.com"),
     specialties: ["Tableside Ordering", "QR Code Payments", "Shift4 Backbone Security"],
-    images: [],
+    images: ["/images/Skytab1.webp"],
   },
 ]
 
@@ -144,7 +144,7 @@ export const gateways: Partner[] = [
     longDescription: "The Dejavoo Gateway serves lightweight, effective invoicing directly accessible via any web browser. Spin up a payment terminal absolutely anywhere without heavy software limitations.",
     logo: getLogo("dejavoo.net"),
     specialties: ["Browser-Based Virtual Terminals", "Instant Web Invoicing", "No Desktop Software Required"],
-    images: ["/images/Dejavoo1.webp"],
+    images: ["/images/Dejavoo1.JPG"],
   },
   {
     id: "nmi",
@@ -158,5 +158,64 @@ export const gateways: Partner[] = [
   },
 ]
 
+export const mobilePayments: Partner[] = [
+  {
+    id: "valor-mobile",
+    name: "Valor Mobile",
+    desc: "Mobile POS solution from Valor PayTech for accepting payments on the go with smartphone-friendly workflows.",
+    longDescription:
+      "Valor Mobile extends payment acceptance beyond the counter so merchants can take payments anywhere. Based on Valor's mobile POS approach, it supports modern payment flows and helps teams keep checkout fast, flexible, and customer-friendly in the field or at the table.",
+    logo: getLogo("valorpaytech.com"),
+    specialties: [
+      "On-the-go payment acceptance",
+      "Mobile checkout workflows",
+      "Built for field and in-store flexibility",
+    ],
+    images: [],
+  },
+  {
+    id: "iposgo-android",
+    name: "IPOSgo! Android",
+    desc: "Android-based mobile payments app for taking card payments and managing transactions from your device.",
+    longDescription:
+      "IPOSgo! Android is designed for merchants who need mobile-first checkout from an Android phone or tablet. It enables teams to process transactions quickly and keep payment operations portable, making it a strong fit for delivery, events, and line-busting scenarios.",
+    logo: getLogo("ipospays.com"),
+    specialties: [
+      "Android phone and tablet workflow",
+      "Portable checkout for events and delivery",
+      "Fast transaction handling",
+    ],
+    images: [],
+  },
+  {
+    id: "iposgo-ios",
+    name: "IPOSgo! iOS / iPhone",
+    desc: "iPhone-friendly mobile payment solution for businesses that need flexible checkout away from the counter.",
+    longDescription:
+      "IPOSgo! iOS / iPhone gives Apple-based teams a streamlined way to accept payments from a mobile device. It supports everyday mobile checkout use cases where speed and flexibility matter, whether at pop-ups, curbside, or in-service environments.",
+    logo: getLogo("ipospays.com"),
+    specialties: [
+      "iPhone-based checkout",
+      "Great for pop-ups and curbside",
+      "Simple mobile payment flow",
+    ],
+    images: [],
+  },
+  {
+    id: "dejapaypro-mobile",
+    name: "DejaPayPro Mobile",
+    desc: "Mobile payment companion built for Dejavoo merchants who want flexible card acceptance and transaction visibility.",
+    longDescription:
+      "DejaPayPro Mobile brings Dejavoo merchants a mobile-friendly way to run payments with less friction. It helps businesses process transactions outside the traditional checkout station while keeping operations connected to their broader Dejavoo payment ecosystem.",
+    logo: getLogo("dejavoo.net"),
+    specialties: [
+      "Dejavoo ecosystem compatibility",
+      "Mobile card acceptance",
+      "Flexible checkout beyond the front counter",
+    ],
+    images: [],
+  },
+]
+
 // To handle lookups, we merge them
-export const allPartners = [...posSystems, ...gateways]
+export const allPartners = [...posSystems, ...gateways, ...mobilePayments]

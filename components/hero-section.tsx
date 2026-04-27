@@ -70,7 +70,7 @@ export function HeroSection() {
               if (el) el.scrollIntoView({ behavior: "smooth" })
             }}
           >
-            Get My Free Terminal
+            Check Equipment Eligibility
             <ArrowRight />
           </Button>
 
@@ -85,6 +85,18 @@ export function HeroSection() {
           >
             <ChevronDown />
             See How It Works
+          </Button>
+
+          <Button
+            variant="outline"
+            size="lg"
+            className="rounded-full px-8 py-4 text-lg font-medium border-border hover:bg-accent transition-all duration-200 hover:scale-105 group bg-transparent cursor-pointer"
+            onClick={() => {
+              const el = document.getElementById("matthew")
+              if (el) el.scrollIntoView({ behavior: "smooth" })
+            }}
+          >
+            Meet the Family
           </Button>
         </div>
 

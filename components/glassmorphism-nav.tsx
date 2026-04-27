@@ -99,7 +99,7 @@ export function GlassmorphismNav() {
         }}
       >
         {/* Main Navigation */}
-        <div className="w-[90vw] max-w-xs md:max-w-4xl mx-auto">
+  <div className="w-[90vw] max-w-xs lg:max-w-4xl mx-auto">
           <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-3 md:px-6 md:py-2">
             <div className="flex items-center justify-between">
               {/* Logo */}
@@ -114,7 +114,7 @@ export function GlassmorphismNav() {
               </Link>
 
               {/* Desktop Navigation */}
-              <div className="hidden md:flex items-center space-x-8">
+              <div className="hidden lg:flex items-center space-x-6">
                 {navigation.map((item) =>
                   item.href.startsWith("/") ? (
                     <Link
@@ -137,12 +137,12 @@ export function GlassmorphismNav() {
               </div>
 
               {/* Desktop CTA Button */}
-              <div className="hidden md:block">
+              <div className="hidden lg:block">
                 <button
                   className="relative bg-white hover:bg-gray-50 text-black font-medium px-6 py-2 rounded-full flex items-center transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer group"
                   onClick={() => scrollToSection("#contact")}
                 >
-                  <span className="mr-2">Get My Free Terminal</span>
+                  <span className="mr-2">Check Eligibility</span>
                   <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
               </div>
@@ -150,7 +150,7 @@ export function GlassmorphismNav() {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="md:hidden text-white hover:scale-110 transition-transform duration-200 cursor-pointer touch-manipulation"
+                className="lg:hidden text-white hover:scale-110 transition-transform duration-200 cursor-pointer touch-manipulation"
               >
                 <div className="relative w-6 h-6">
                   <Menu
@@ -171,7 +171,7 @@ export function GlassmorphismNav() {
           </div>
         </div>
 
-        <div className="md:hidden relative">
+  <div className="lg:hidden relative">
           {/* Backdrop overlay */}
           <div
             className={`fixed inset-0 bg-black/20 backdrop-blur-sm transition-all duration-300 ${
@@ -229,7 +229,7 @@ export function GlassmorphismNav() {
                   }}
                   onClick={() => scrollToSection("#contact")}
                 >
-                  <span className="mr-2">Get My Free Terminal</span>
+                  <span className="mr-2">Check Eligibility</span>
                   <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
               </div>

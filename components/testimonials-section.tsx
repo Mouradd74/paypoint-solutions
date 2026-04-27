@@ -32,46 +32,20 @@ export function TestimonialsSection() {
 
   const testimonials = [
     {
-      text: "Matthew saved us over $400 a month. He came in, set everything up, and we haven't paid a processing fee since.",
-      name: "Carlos R.",
-      role: "Restaurant Owner",
+      text: "Outstanding customer service from start to finish. The card reader setup was smooth, fast, and easy. They explained everything clearly, transactions process quickly with no issues, and support is always available. You can tell they truly care about delivering the best experience.",
+      name: "Estrella Salas",
+      role: "Recommends Paypoint Solutions LLC · Feb 19",
     },
     {
-      text: "I didn't realize how much I was losing until Matthew did a free audit. Setup was fast and the terminal was completely free.",
-      name: "Jessica M.",
-      role: "Retail Shop Owner",
-    },
-    {
-      text: "Unlike the big processors, Matthew actually picks up the phone. Local support makes all the difference.",
-      name: "Tony B.",
-      role: "Food Truck Owner",
-    },
-    {
-      text: "I was skeptical at first but Matthew walked me through everything. Wish I had switched years ago.",
-      name: "Amanda L.",
-      role: "Salon Owner",
-    },
-    {
-      text: "Zero fees, free terminal, and I can text Matthew directly if anything comes up. What more could you want?",
-      name: "David K.",
-      role: "Auto Shop Owner",
-    },
-    {
-      text: "Matthew saved us over $400 a month. He came in, set everything up, and we haven't paid a processing fee since.",
-      name: "Carlos R.",
-      role: "Restaurant Owner",
-    },
-    {
-      text: "I didn't realize how much I was losing until Matthew did a free audit. Setup was fast and the terminal was completely free.",
-      name: "Jessica M.",
-      role: "Retail Shop Owner",
-    },
-    {
-      text: "Unlike the big processors, Matthew actually picks up the phone. Local support makes all the difference.",
-      name: "Tony B.",
-      role: "Food Truck Owner",
+      text: "Great service and fast response by Matt — he's great. Thanks for taking care of my business.",
+      name: "Rollos Flautas",
+      role: "Recommends Paypoint Solutions LLC · Feb 13",
     },
   ]
+
+  const columnOne = [testimonials[0], testimonials[1], testimonials[0]]
+  const columnTwo = [testimonials[1], testimonials[0], testimonials[1]]
+  const columnThree = [testimonials[0], testimonials[1], testimonials[0]]
 
   return (
     <section id="testimonials" ref={sectionRef} className="relative pt-16 pb-16 px-4 sm:px-6 lg:px-8">
@@ -114,17 +88,9 @@ export function TestimonialsSection() {
               WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
             }}
           >
-            <TestimonialsColumn testimonials={testimonials.slice(0, 3)} duration={15} className="flex-1" />
-            <TestimonialsColumn
-              testimonials={testimonials.slice(2, 5)}
-              duration={12}
-              className="flex-1 hidden md:block"
-            />
-            <TestimonialsColumn
-              testimonials={testimonials.slice(1, 4)}
-              duration={18}
-              className="flex-1 hidden lg:block"
-            />
+            <TestimonialsColumn testimonials={columnOne} duration={15} className="flex-1" />
+            <TestimonialsColumn testimonials={columnTwo} duration={12} className="flex-1 hidden md:block" />
+            <TestimonialsColumn testimonials={columnThree} duration={18} className="flex-1 hidden lg:block" />
           </div>
         </div>
       </div>

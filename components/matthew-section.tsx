@@ -5,10 +5,10 @@ import Image from "next/image"
 import { Check, Instagram } from "lucide-react"
 
 const bullets = [
-  "Local Seguin-based support",
+  "Family-owned and relationship-first support",
+  "Local Seguin-based service from people who care",
   "$0 credit card processing fees",
   "Free terminal equipment",
-  "No long-term contracts",
   "Direct contact — no call centers",
 ]
 
@@ -44,29 +44,43 @@ export function MatthewSection() {
     <section id="matthew" ref={sectionRef} className="py-16 sm:py-24 px-4 relative z-10">
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left — Photo */}
+          {/* Left — Photos */}
           <div
             className={`flex justify-center transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
             }`}
           >
-            <div className="relative max-w-sm w-full">
+            <div className="relative max-w-2xl w-full">
               {/* Glow effect */}
               <div className="absolute -inset-4 rounded-full bg-white/10 blur-2xl opacity-50" />
-              {/* Photo */}
-              <div className="relative rounded-2xl overflow-hidden bg-white/5 backdrop-blur-md border border-white/15 shadow-2xl">
-                <Image
-                  src="/images/matthew.webp"
-                  alt="Matthew Wurz, CEO & Founder of Paypoint Solutions in Seguin, Texas"
-                  width={480}
-                  height={600}
-                  className="w-full h-full object-cover object-top"
-                  style={{ maxHeight: "520px" }}
-                />
+              <div className="relative grid sm:grid-cols-2 gap-4">
+                {/* Matthew photo */}
+                <div className="relative rounded-2xl overflow-hidden bg-white/5 backdrop-blur-md border border-white/15 shadow-2xl">
+                  <Image
+                    src="/images/matthew.webp"
+                    alt="Matthew Wurz, CEO & Founder of Paypoint Solutions in Seguin, Texas"
+                    width={480}
+                    height={600}
+                    className="w-full h-full object-cover object-top"
+                    style={{ maxHeight: "520px" }}
+                  />
+                </div>
+
+                {/* Family photo */}
+                <div className="relative rounded-2xl overflow-hidden bg-white/5 backdrop-blur-md border border-white/15 shadow-2xl">
+                  <Image
+                    src="/images/familyPhoto.JPG"
+                    alt="The Paypoint Solutions family-owned team"
+                    width={480}
+                    height={600}
+                    className="w-full h-full object-cover"
+                    style={{ maxHeight: "520px" }}
+                  />
+                </div>
               </div>
               {/* Badge */}
               <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white text-slate-900 font-bold text-sm px-5 py-2.5 rounded-full shadow-2xl whitespace-nowrap border border-slate-100">
-                📍 Seguin, TX — CEO & Founder
+                📍 Seguin, TX — Family-Owned & Local
               </div>
             </div>
           </div>
@@ -83,14 +97,14 @@ export function MatthewSection() {
             </span>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
-              Most Agents Serve The Banks.{" "}
-              <span className="italic font-light text-white/80">I'm Here To Serve You.</span>
+              You're Not Just Another Account To Us.{" "}
+              <span className="italic font-light text-white/80">You're A Neighbor We Show Up For.</span>
             </h2>
 
             <p className="text-base sm:text-lg text-white/70 leading-relaxed mb-8">
-              Matthew Wurz is Seguin's go-to credit card processing expert. Unlike national reps who push long contracts
-              and hidden fees, Matthew offers free equipment, zero processing fees, and real local support — because he
-              lives and works right here in your community.
+              Paypoint Solutions is family-owned, and that changes everything. We treat your business the way we treat
+              our own — with honesty, urgency, and real care. Matthew and the team live and work right here in Seguin,
+              so when you need help, you're talking to people who know your name, your goals, and your community.
             </p>
 
             {/* Checklist */}

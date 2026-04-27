@@ -8,7 +8,7 @@ import { AITeamSection } from "@/components/ai-team-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { MatthewSection } from "@/components/matthew-section"
 import { ROICalculatorSection } from "@/components/roi-calculator-section"
-import { CTASection } from "@/components/cta-section"
+import { EquipmentQualifier } from "@/components/EquipmentQualifier"
 import { Footer } from "@/components/footer"
 
 export default function HomePage() {
@@ -28,7 +28,7 @@ export default function HomePage() {
           <TestimonialsSection />
           <MatthewSection />
           <ROICalculatorSection />
-          <CTASection />
+          <EquipmentQualifier />
           <Footer />
         </div>
       </main>
