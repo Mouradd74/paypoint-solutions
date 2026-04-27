@@ -9,6 +9,12 @@ export function ROICalculatorSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
   const [activeTab, setActiveTab] = useState<"ecommerce" | "markets" | "supermarkets" | "Other Stores">("ecommerce")
+  const industryOptions = [
+    { value: "ecommerce", label: "E-Commerce", Icon: ShoppingCart },
+    { value: "markets", label: "Markets", Icon: Store },
+    { value: "supermarkets", label: "Supermarkets", Icon: Store },
+    { value: "Other Stores", label: "Other Stores", Icon: Store },
+  ] as const
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -146,15 +152,28 @@ export function ROICalculatorSection() {
               <h4 className="text-center text-gray-400 text-xs sm:text-sm mb-6 uppercase tracking-[0.2em] font-medium">
                 Industry Specific Requirements
               </h4>
-              <fieldset className="mb-6">
+              <div className="mb-6 md:hidden">
+                <label htmlFor="roi-industry-mobile" className="sr-only">
+                  Select industry
+                </label>
+                <select
+                  id="roi-industry-mobile"
+                  value={activeTab}
+                  onChange={(e) => setActiveTab(e.target.value as "ecommerce" | "markets" | "supermarkets" | "Other Stores")}
+                  className="w-full max-w-sm mx-auto block rounded-xl bg-white/10 border border-white/20 px-4 py-3 text-sm text-white touch-manipulation"
+                >
+                  {industryOptions.map(({ value, label }) => (
+                    <option key={value} value={value} className="text-black">
+                      {label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <fieldset className="mb-6 hidden md:block">
                 <legend className="sr-only">Select industry</legend>
                 <div className="flex flex-wrap items-center justify-center gap-2">
-                  {[
-                    { value: "ecommerce" as const, label: "E-Commerce", Icon: ShoppingCart },
-                    { value: "markets" as const, label: "Markets", Icon: Store },
-                    { value: "supermarkets" as const, label: "Supermarkets", Icon: Store },
-                    { value: "Other Stores" as const, label: "Other Stores", Icon: Store },
-                  ].map(({ value, label, Icon }) => {
+                  {industryOptions.map(({ value, label, Icon }) => {
                     const id = `roi-tab-${value.replace(/\s+/g, "-").toLowerCase()}`
                     const checked = activeTab === value
 
