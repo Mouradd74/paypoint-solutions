@@ -109,8 +109,8 @@ export function ROICalculatorSection() {
                 </h4>
                 <ul className="space-y-3">
                   {[
-                    "Merchant Processing Agreement (MPA)",
-                    "Equipment Order Form",
+                    
+                    
                     "Driver's License or Government Issued ID",
                     "Voided check or a signed bank letter",
                     "Business License (High-Risk Merchants)"
@@ -132,10 +132,10 @@ export function ROICalculatorSection() {
                 <ul className="space-y-3">
                   {[
                     "A copy of the Social Security Card",
-                    "Current or past merchant processing statements",
+                    "Current or past merchant processing statements (optional)",
                     "EIN Letter",
-                    "Bank Statements",
-                    "A residential bill to verify home address",
+                    
+                    
                     "Pictures of the business"
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3 text-gray-300 text-sm">
