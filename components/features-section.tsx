@@ -1,49 +1,25 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { ShieldCheck, CreditCard, HeadphonesIcon, BadgeDollarSign, Search, FileCheck } from "lucide-react"
+import { ShieldCheck, CreditCard, HeadphonesIcon } from "lucide-react"
 
 const services = [
   {
     icon: ShieldCheck,
     title: "Zero-Fee Processing",
-    description:
-      "Accept Visa, Mastercard, Amex, and Discover without paying a cent in processing fees. Fully compliant with all card network rules.",
+    description: "Accept cards with no processing fees — compliant and transparent.",
     size: "medium",
   },
   {
     icon: CreditCard,
-    title: "Free Credit Card Terminal",
-    description:
-      "Brand new equipment at zero upfront cost. Same-day setup included. Requires minimum $20,000/month in processing volume.",
+    title: "Free Terminal",
+    description: "Brand-new terminal at no upfront cost and fast setup.",
     size: "medium",
   },
   {
     icon: HeadphonesIcon,
-    title: "Local Human Support",
-    description:
-      "Matthew is based in Seguin, TX. Call or text him directly. No call centers, no hold music, no overseas support desks.",
-    size: "large",
-  },
-  {
-    icon: BadgeDollarSign,
-    title: "Cash Discount Program",
-    description:
-      "The terminal automatically calculates and shows the small service fee to card-paying customers. Cash customers save. You keep everything.",
-    size: "large",
-  },
-  {
-    icon: Search,
-    title: "Free Compliance Audit",
-    description:
-      "We review your current setup for Visa/Mastercard policy violations at no charge. Many businesses are unknowingly at risk of fines up to $5,000.",
-    size: "medium",
-  },
-  {
-    icon: FileCheck,
-    title: "No Long-Term Contracts",
-    description:
-      "No lock-in. No cancellation fees. We earn your business every single month by delivering real results.",
+    title: "Local Support",
+    description: "Direct, local help — no call centers, no hold music.",
     size: "medium",
   },
 ]
@@ -51,7 +27,6 @@ const services = [
 export function FeaturesSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
-  const [showAllMobile, setShowAllMobile] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -127,48 +102,39 @@ export function FeaturesSection() {
           </div>
 
           <div
-            className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 transition-all duration-1000 delay-300 ${
+            className={`grid grid-cols-1 md:grid-cols-3 gap-6 transition-all duration-1000 delay-300 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
             }`}
           >
             {services.map((service, index) => {
               const Icon = service.icon
-              const isHiddenOnMobile = !showAllMobile && index >= 3
               return (
                 <div
                   key={index}
-                  className={`group transition-all duration-1000 ${service.size === "large" ? "md:col-span-2" : ""} ${isHiddenOnMobile ? 'hidden md:block' : 'block'}`}
+                  className={`group transition-all duration-500 ${service.size === "large" ? "md:col-span-2" : ""}`}
                   style={{
-                    transitionDelay: isVisible ? `${300 + index * 100}ms` : "0ms",
+                    transitionDelay: isVisible ? `${200 + index * 80}ms` : "0ms",
                   }}
                 >
-                  <div className="bg-white rounded-2xl p-6 sm:p-8 h-full shadow-lg md:hover:shadow-2xl transition-all duration-500 md:hover:-translate-y-2 border border-slate-200 md:hover:border-slate-300">
-                    <div className="mb-6">
-                      <div className="h-14 w-14 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 md:group-hover:bg-slate-900 md:group-hover:text-white transition-all duration-300">
-                        <Icon className="h-7 w-7" />
+                  <div className="bg-white rounded-2xl p-5 sm:p-6 h-full shadow-sm md:hover:shadow-md transition-all duration-300 md:hover:-translate-y-1 border border-slate-100">
+                    <div className="mb-4">
+                      <div className="h-12 w-12 rounded-lg bg-slate-100 flex items-center justify-center text-slate-700 md:group-hover:bg-slate-900 md:group-hover:text-white transition-all duration-200">
+                        <Icon className="h-6 w-6" />
                       </div>
                     </div>
 
-                    <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 group-hover:text-slate-700 transition-colors duration-300">
+                    <h3 className="text-lg sm:text-xl font-semibold text-slate-900 mb-2 group-hover:text-slate-700 transition-colors duration-200">
                       {service.title}
                     </h3>
 
-                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed">{service.description}</p>
+                    <p className="text-slate-600 text-sm leading-tight">{service.description}</p>
                   </div>
                 </div>
               )
             })}
           </div>
 
-          {/* Mobile Show More Button for Features */}
-          <div className="mt-8 flex justify-center md:hidden transition-all duration-500 relative z-20">
-            <button
-              onClick={() => setShowAllMobile(!showAllMobile)}
-              className="px-6 py-3 rounded-full text-slate-700 bg-white border border-slate-200 shadow-sm text-sm font-medium hover:bg-slate-50 transition-colors"
-            >
-              {showAllMobile ? "Show Less" : "Show All Features"}
-            </button>
-          </div>
+          {/* Short section — no mobile toggle */}
 
         </div>
       </div>

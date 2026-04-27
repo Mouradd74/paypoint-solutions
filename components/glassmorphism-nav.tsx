@@ -6,7 +6,6 @@ import Link from "next/link"
 
 const navigation = [
   { name: "How It Works", href: "#how-it-works" },
-  { name: "Compare", href: "#compare" },
   { name: "Services", href: "#services" },
   { name: "Book a Call", href: "#book" },
   { name: "Contact", href: "#contact" },

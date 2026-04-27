@@ -20,7 +20,6 @@ const footerLinks: FooterSection[] = [
     label: "Navigate",
     links: [
       { title: "How It Works", href: "#how-it-works" },
-      { title: "Compare", href: "#compare" },
       { title: "Services", href: "#services" },
       { title: "Meet Matthew", href: "#matthew" },
       { title: "Book a Call", href: "#book" },
@@ -32,7 +31,7 @@ const footerLinks: FooterSection[] = [
     links: [
       { title: "Zero-Fee Processing", href: "#services" },
       { title: "Free Terminal", href: "#services" },
-      { title: "Cash Discount Program", href: "#compare" },
+      { title: "Cash Discount Program", href: "#services" },
       { title: "Fee Audit", href: "#contact" },
     ],
   },

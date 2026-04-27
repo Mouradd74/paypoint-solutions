@@ -48,7 +48,7 @@ export function AITeamSection() {
   }, [])
 
   return (
-    <section id="compare" ref={sectionRef} className="relative z-10">
+    <section ref={sectionRef} className="relative z-10">
       <div className="bg-white rounded-b-[3rem] pt-16 sm:pt-24 pb-16 sm:pb-24 px-4 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           {/* Header */}

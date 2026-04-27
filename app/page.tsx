@@ -4,7 +4,7 @@ import { ProblemSolutionSection } from "@/components/problem-solution-section"
 import Aurora from "@/components/Aurora"
 import { FeaturesSection } from "@/components/features-section"
 import { PaymentSolutionsSection } from "@/components/payment-solutions-section"
-import { AITeamSection } from "@/components/ai-team-section"
+// AITeamSection (compare) removed from homepage render
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { MatthewSection } from "@/components/matthew-section"
 import { ROICalculatorSection } from "@/components/roi-calculator-section"
@@ -24,7 +24,6 @@ export default function HomePage() {
           <ProblemSolutionSection />
           <FeaturesSection />
           <PaymentSolutionsSection />
-          <AITeamSection />
           <TestimonialsSection />
           <MatthewSection />
           <ROICalculatorSection />
