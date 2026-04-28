@@ -32,7 +32,7 @@ export const posSystems: Partner[] = [
   },
   //{
    // id: "dejavoo-pos", // Different ID from gateway
-   //name: "Dejavoo",
+   //name: "Dejavoo Terminals",
    // desc: "Simple, reliable terminals for businesses that only need to accept credit cards — nothing more.",
    // longDescription: "Dejavoo is an industry-leading provider for reliable, straightforward credit card terminals. If you don't need a bloated POS and just need to securely process transactions all day without a glitch, Dejavoo has the perfect straightforward hardware.",
     //logo: getLogo("dejavoo.net"),
@@ -218,6 +218,16 @@ export const mobilePayments: Partner[] = [
 ]
 
 export const equipmentPartners: Partner[] = [
+  {
+    id: "dejavoo-terminal",
+    name: "Dejavoo Terminals",
+    desc: "Simple, reliable terminals for businesses that only need to accept credit cards — nothing more.",
+    longDescription:
+      "Dejavoo is an industry-leading provider for reliable, straightforward credit card terminals. If you don't need a bloated POS and just need to securely process transactions all day without a glitch, Dejavoo has the perfect straightforward hardware.",
+    logo: getLogo("dejavoo.net"),
+    specialties: ["Standalone Credit Card Terminals", "Reliable Uptime", "Zero-Bloat Software"],
+    images: ["/images/Dejavoo1.JPG"],
+  },
   {
     id: "valor-terminal",
     name: "Valor Terminal",

@@ -269,41 +269,34 @@ export function PaymentSolutionsSection() {
                 <p className="text-gray-300">Simple terminals for businesses that just need to accept cards.</p>
               </div>
 
-              <div className="max-w-2xl mx-auto">
-                {(() => {
-                  const valor = equipmentPartners.find((partner) => partner.id === "valor-terminal")
-                  const href = `/partners/${valor?.id ?? "valor-terminal"}`
-                  const imgSrc = valor?.logo || ""
-                  const title = valor?.name ?? "Valor Terminal"
-                  const desc =
-                    valor?.desc ??
-                    "Dedicated payment terminal hardware built for reliable, in-person card acceptance — fast setup, durable design, and perfect for countertop or checkout-only needs."
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                {equipmentPartners.map((partner) => (
+                  <Link href={`/partners/${partner.id}`} key={partner.id} className="block group touch-manipulation relative z-20">
+                    <div className="relative bg-white/[0.03] md:hover:bg-white/[0.06] md:hover:scale-[1.02] border border-white/10 md:hover:border-emerald-400/30 rounded-2xl p-8 backdrop-blur-md transition-[transform,background-color,border-color,box-shadow] duration-200 ease-out overflow-hidden text-center cursor-pointer shadow-lg md:hover:shadow-emerald-900/20 active:scale-95 active:bg-white/[0.05]">
+                      <div className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                  return (
-                    <Link href={href} className="block group touch-manipulation relative z-20">
-                      <div className="relative bg-white/[0.03] md:hover:bg-white/[0.06] md:hover:scale-[1.02] border border-white/10 md:hover:border-emerald-400/30 rounded-2xl p-8 backdrop-blur-md transition-[transform,background-color,border-color,box-shadow] duration-200 ease-out overflow-hidden text-center cursor-pointer shadow-lg md:hover:shadow-emerald-900/20 active:scale-95 active:bg-white/[0.05]">
-                        <div className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-                        <div className="w-20 h-20 mx-auto rounded-2xl bg-white flex items-center justify-center p-3 mb-6 relative z-10 shadow-xl">
-                          {imgSrc ? (
-                            <img src={imgSrc} alt={title} className="w-full h-full object-contain" />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center text-black font-bold">V</div>
-                          )}
-                        </div>
-
-                        <h3 className="text-2xl font-bold text-white mb-4 relative z-10 group-hover:text-emerald-400 transition-colors">{title}</h3>
-                        <p className="text-gray-400 text-base leading-relaxed relative z-10">{desc}</p>
-
-                        {/* Interactive View Details Indicator */}
-                        <div className="mt-6 flex items-center justify-center gap-2 relative z-10 text-emerald-400/80 group-hover:text-emerald-400 font-medium text-sm transition-colors">
-                          <span>View Details</span>
-                          <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-                        </div>
+                      <div className="w-20 h-20 mx-auto rounded-2xl bg-white flex items-center justify-center p-3 mb-6 relative z-10 shadow-xl">
+                        {partner.logo ? (
+                          <img src={partner.logo} alt={partner.name} className="w-full h-full object-contain" />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-black font-bold">
+                            {partner.name.charAt(0)}
+                          </div>
+                        )}
                       </div>
-                    </Link>
-                  )
-                })()}
+
+                      <h3 className="text-2xl font-bold text-white mb-4 relative z-10 group-hover:text-emerald-400 transition-colors">
+                        {partner.name}
+                      </h3>
+                      <p className="text-gray-400 text-base leading-relaxed relative z-10">{partner.desc}</p>
+
+                      <div className="mt-6 flex items-center justify-center gap-2 relative z-10 text-emerald-400/80 group-hover:text-emerald-400 font-medium text-sm transition-colors">
+                        <span>View Details</span>
+                        <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
           )}
