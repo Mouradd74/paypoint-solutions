@@ -252,9 +252,12 @@ export function ROICalculatorSection() {
             className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl overflow-hidden"
           >
             <div
+              id="calendly-embed"
               className="calendly-inline-widget"
               data-url={CAL_URL}
               style={{ minWidth: "320px", height: "720px" }}
+              aria-label="Calendly scheduling widget"
+              tabIndex={-1}
             />
           </div>
         </div>

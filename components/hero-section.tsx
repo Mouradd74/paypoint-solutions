@@ -75,17 +75,36 @@ export function HeroSection() {
           </Button>
 
           <Button
-            variant="outline"
             size="lg"
-            className="rounded-full px-8 py-4 text-lg font-medium border-border hover:bg-accent transition-all duration-200 hover:scale-105 group bg-transparent cursor-pointer"
+            className="bg-emerald-500 text-white rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:bg-emerald-600 hover:scale-105 hover:shadow-lg group cursor-pointer relative overflow-hidden"
             onClick={() => {
-              const el = document.getElementById("how-it-works")
-              if (el) el.scrollIntoView({ behavior: "smooth" })
+              const el = document.getElementById("calendly-embed")
+              if (el) {
+                el.scrollIntoView({ behavior: "smooth", block: "center" })
+                // focus after a small delay so the browser completes scrolling
+                setTimeout(() => {
+                  try {
+                    ;(el as HTMLElement).focus()
+                  } catch (e) {
+                    // ignore
+                  }
+                }, 550)
+                return
+              }
+
+              // fallback: open Calendly popup if widget isn't present yet
+              const calendly = (window as any).Calendly
+              if (calendly?.initPopupWidget) {
+                calendly.initPopupWidget({ url: "https://calendly.com/paypointsolutions1/30min" })
+                return
+              }
+
+              window.open("https://calendly.com/paypointsolutions1/30min", "_blank", "noopener,noreferrer")
             }}
           >
-            <ChevronDown />
-            See How It Works
+            Schedule a Call
           </Button>
+
 
           <Button
             variant="outline"
