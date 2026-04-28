@@ -16,4 +16,4 @@ Marketing site for Paypoint Solutions with Texas-focused POS and payment process
 - Google Business Profile notes: `docs/google-business-profile.md`
 
 ## Notes
-Update `NEXT_PUBLIC_SITE_URL` in your environment if you deploy under a custom domain.
+Update `NEXT_PUBLIC_SITE_URL` in your environment to match your live domain (e.g. `https://paypointsolutions-tex.com`).
