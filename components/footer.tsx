@@ -113,11 +113,33 @@ export function Footer() {
           Free terminal requires minimum $20,000/month in processing volume. Cash Discount Program fees are disclosed at
           point of sale in compliance with Visa and Mastercard network rules.
         </p>
-        <p className="text-muted-foreground text-sm">© 2025 Paypoint Solutions. All rights reserved.</p>
+        <p className="text-muted-foreground text-sm">
+          © 2025 Paypoint Solutions. All rights reserved. Developed by{" "}
+          <a
+            href="https://www.instagram.com/mouradelkady"
+            target="_blank"
+            rel="noreferrer"
+            className="text-white/60 underline underline-offset-4 decoration-white/40 hover:text-white hover:decoration-white transition-colors"
+          >
+            mouradelkady
+          </a>
+          .
+        </p>
       </div>
 
       <div className="hidden md:block mt-8 pt-6 border-t border-foreground/10 w-full">
-        <p className="text-white/40 text-xs text-center">© 2025 Paypoint Solutions. All rights reserved.</p>
+        <p className="text-white/40 text-xs text-center">
+          © 2025 Paypoint Solutions. All rights reserved. Developed by{" "}
+          <a
+            href="https://www.instagram.com/mouradelkady"
+            target="_blank"
+            rel="noreferrer"
+            className="text-white/60 underline underline-offset-4 decoration-white/40 hover:text-white hover:decoration-white transition-colors"
+          >
+            mouradelkady
+          </a>
+          .
+        </p>
       </div>
     </footer>
   )
