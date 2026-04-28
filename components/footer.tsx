@@ -21,6 +21,8 @@ const footerLinks: FooterSection[] = [
     links: [
       { title: "How It Works", href: "#how-it-works" },
       { title: "Services", href: "#services" },
+      { title: "Texas POS", href: "/texas" },
+      { title: "Blog", href: "/blog" },
       { title: "Meet Matthew", href: "#matthew" },
       { title: "Book a Call", href: "#book" },
       { title: "Contact", href: "#contact" },
