@@ -122,7 +122,7 @@ export function MatthewSection() {
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-3">
               <button
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-white text-slate-900 rounded-full font-semibold text-base hover:bg-gray-50 transition-all duration-300 hover:scale-105 shadow-xl cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-white text-slate-900 rounded-full font-semibold text-base hover:bg-gray-50 transition-all duration-300 hover:scale-105 shadow-xl cursor-pointer whitespace-nowrap flex-shrink-0"
                 onClick={() => {
                   const el = document.getElementById("book")
                   if (el) el.scrollIntoView({ behavior: "smooth" })
@@ -130,15 +130,30 @@ export function MatthewSection() {
               >
                 Book a Free Call with Matthew
               </button>
-              <a
-                href="https://www.instagram.com/feeassasintx"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-white/10 text-white rounded-full font-semibold text-base border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 cursor-pointer"
-              >
-                <Instagram className="h-5 w-5" />
-                Follow on Instagram
-              </a>
+              <div className="flex items-center gap-3 flex-wrap sm:flex-nowrap">
+                <a
+                  href="https://www.instagram.com/feeassasintx"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 text-white rounded-full font-semibold text-sm border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 cursor-pointer whitespace-nowrap flex-shrink-0"
+                >
+                  <Instagram className="h-5 w-5" />
+                  <span className="hidden sm:inline">Follow on Instagram</span>
+                </a>
+
+                <a
+                  href="https://www.facebook.com/feeassasintx"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 text-white rounded-full font-semibold text-sm border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105 cursor-pointer whitespace-nowrap flex-shrink-0"
+                  aria-label="Follow on Facebook"
+                >
+                  <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                    <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.877V15.47h-2.54v-3.47h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.772-1.63 1.563v1.875h2.773l-.444 3.47h-2.329v6.406C18.343 21.128 22 16.991 22 12z" />
+                  </svg>
+                  <span className="hidden sm:inline">Follow on Facebook</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

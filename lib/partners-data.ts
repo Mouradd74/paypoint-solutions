@@ -30,15 +30,15 @@ export const posSystems: Partner[] = [
     specialties: ["Custom Checkout Flows", "Smart Analytics", "Rapid Deployment"],
     images: [],
   },
-  {
-    id: "dejavoo-pos", // Different ID from gateway
-    name: "Dejavoo",
-    desc: "Simple, reliable terminals for businesses that only need to accept credit cards — nothing more.",
-    longDescription: "Dejavoo is an industry-leading provider for reliable, straightforward credit card terminals. If you don't need a bloated POS and just need to securely process transactions all day without a glitch, Dejavoo has the perfect straightforward hardware.",
-    logo: getLogo("dejavoo.net"),
-    specialties: ["Standalone Credit Card Terminals", "Reliable Uptime", "Zero-Bloat Software"],
-    images: ["/images/Dejavoo1.JPG"],
-  },
+  //{
+   // id: "dejavoo-pos", // Different ID from gateway
+   //name: "Dejavoo",
+   // desc: "Simple, reliable terminals for businesses that only need to accept credit cards — nothing more.",
+   // longDescription: "Dejavoo is an industry-leading provider for reliable, straightforward credit card terminals. If you don't need a bloated POS and just need to securely process transactions all day without a glitch, Dejavoo has the perfect straightforward hardware.",
+    //logo: getLogo("dejavoo.net"),
+    //specialties: ["Standalone Credit Card Terminals", "Reliable Uptime", "Zero-Bloat Software"],
+    //images: ["/images/Dejavoo1.JPG"],
+  //},
   {
     id: "quickv",
     name: "Quickvee",
@@ -124,7 +124,7 @@ export const gateways: Partner[] = [
     longDescription: "Valor PayTech provides a cutting-edge virtual terminal platform paired with an advanced omnichannel gateway. Access your transactions gracefully via cloud dashboards designed for multi-user security oversight.",
     logo: getLogo("valorpaytech.com"),
     specialties: ["Omnichannel Gateway", "Sleek Virtual Terminals", "Multi-user Access Modes"],
-    images: ["/images/Valor1.webp"],
+    images: [],
   },
   {
     id: "clover-gateway",
@@ -217,5 +217,22 @@ export const mobilePayments: Partner[] = [
   },
 ]
 
+export const equipmentPartners: Partner[] = [
+  {
+    id: "valor-terminal",
+    name: "Valor Terminal",
+    desc: "Dedicated payment terminal hardware built for reliable, in-person card acceptance.",
+    longDescription:
+      "The Valor Terminal is purpose-built payment hardware for businesses that need fast, dependable in-person card acceptance. It offers a durable countertop design, quick setup, and consistent uptime — ideal for checkout-only locations, service counters, and high-traffic retail environments.",
+    logo: getLogo("valorpaytech.com"),
+    specialties: [
+      "Standalone countertop terminal",
+      "Fast setup and reliable uptime",
+      "Built for in-person card acceptance",
+    ],
+    images: ["/images/Valor1.webp"],
+  },
+]
+
 // To handle lookups, we merge them
-export const allPartners = [...posSystems, ...gateways, ...mobilePayments]
+export const allPartners = [...posSystems, ...gateways, ...mobilePayments, ...equipmentPartners]
