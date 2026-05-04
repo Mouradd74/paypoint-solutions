@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { Menu, X, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 const navigation = [
   { name: "How It Works", href: "#how-it-works" },
@@ -104,8 +105,16 @@ export function GlassmorphismNav() {
               {/* Logo */}
               <Link
                 href="/"
-                className="flex items-center hover:scale-105 transition-transform duration-200 cursor-pointer"
+                className="flex items-center gap-2 hover:scale-105 transition-transform duration-200 cursor-pointer"
               >
+                <Image
+                  src="/images/PPlogo.webp"
+                  alt="Paypoint Solutions Logo"
+                  width={44}
+                  height={44}
+                  className="object-contain"
+                  priority
+                />
                 <div className="flex flex-col leading-tight">
                   <span className="font-extrabold text-white text-base tracking-tight">Paypoint</span>
                   <span className="text-[9px] uppercase tracking-[0.2em] text-white/60 -mt-0.5">Solutions</span>
