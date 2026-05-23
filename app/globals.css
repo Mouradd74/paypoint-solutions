@@ -884,3 +884,19 @@
   animation: fade-in-section 1s ease-out forwards;
   opacity: 0;
 }
+
+/* Hero video loading spinner */
+@keyframes hero-video-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-video-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: hero-video-spin 0.7s linear infinite;
+}
