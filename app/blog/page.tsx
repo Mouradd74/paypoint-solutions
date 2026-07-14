@@ -51,4 +51,6 @@ export default function BlogIndexPage() {
       </main>
     </div>
   )
-}
+
+  
+} 
