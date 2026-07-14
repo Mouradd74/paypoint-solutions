@@ -38,6 +38,38 @@
   --sidebar-ring: oklch(0.7 0.15 142);
 }
 
+#soro-blog,
+#soro-blog * {
+  color: #f1f1f1 !important;
+}
+
+#soro-blog h1,
+#soro-blog h2,
+#soro-blog h3,
+#soro-blog h4 {
+  color: #ffffff !important;
+}
+
+#soro-blog p,
+#soro-blog span,
+#soro-blog li,
+#soro-blog div {
+  color: #d4d4d8 !important;
+}
+
+#soro-blog a {
+  color: #93c5fd !important;
+}
+
+#soro-blog a:hover {
+  color: #bfdbfe !important;
+}
+
+#soro-blog [class*="date"],
+#soro-blog time {
+  color: #9ca3af !important;
+}
+
 .dark {
   --background: oklch(0.05 0 0);
   --foreground: oklch(0.98 0 0);
