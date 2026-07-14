@@ -1,14 +1,14 @@
+"use client"
+
+import Script from "next/script"
 import Link from "next/link"
 import Aurora from "@/components/Aurora"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
-import { blogPosts } from "@/lib/seo-data"
 
-export const metadata = {
-  title: "POS Insights & Texas Payment Processing Blog",
-  description:
-    "Guides and tips for POS systems, credit card terminals, and payment processing in Texas.",
-}
+// Note: metadata export requires this to stay a Server Component.
+// If you keep "use client" above for the Script logic, move metadata
+// to a separate layout.tsx or generateMetadata in a parent server component.
 
 export default function BlogIndexPage() {
   return (
@@ -37,25 +37,12 @@ export default function BlogIndexPage() {
           </section>
 
           <section className="px-6 pb-20">
-            <div className="max-w-5xl mx-auto grid gap-6 md:grid-cols-2">
-              {blogPosts.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className="rounded-3xl border border-white/10 bg-white/5 p-6 text-white transition hover:border-white/30 hover:bg-white/10"
-                >
-                  <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-white/50">
-                    <span>{post.category}</span>
-                    <span>{post.readTime}</span>
-                  </div>
-                  <h2 className="mt-4 text-xl font-semibold">{post.title}</h2>
-                  <p className="mt-2 text-white/70 text-sm">{post.description}</p>
-                  <div className="mt-4 inline-flex items-center text-sm text-white/80">
-                    Read article
-                    <span className="ml-2">→</span>
-                  </div>
-                </Link>
-              ))}
+            <div className="max-w-5xl mx-auto text-white soro-embed-wrapper">
+              <div id="soro-blog" />
+              <Script
+                src="https://app.trysoro.com/api/embed/fe3cc42b-814f-4689-a8ae-4f51d3fce958"
+                strategy="afterInteractive"
+              />
             </div>
           </section>
 
