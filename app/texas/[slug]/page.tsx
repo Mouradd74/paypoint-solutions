@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: page.title,
       description: page.description,
       url: canonical,
-      type: "article",
+      type: "website",
     },
   }
 }
@@ -48,6 +48,8 @@ export default function TexasSeoLandingPage({ params }: PageProps) {
   if (!page) {
     notFound()
   }
+
+  const canonical = `${siteUrl}/texas/${page.slug}`
 
   const faqStructuredData = {
     "@context": "https://schema.org",
@@ -66,13 +68,19 @@ export default function TexasSeoLandingPage({ params }: PageProps) {
     "@context": "https://schema.org",
     "@type": "Service",
     name: page.title,
-    provider: {
-      "@type": "LocalBusiness",
-      name: "Paypoint Solutions",
-      url: siteUrl,
-    },
+    provider: { "@id": `${siteUrl}/#business` },
     areaServed: primaryServiceAreas,
     description: page.description,
+  }
+
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "Texas POS Guides", item: `${siteUrl}/texas` },
+      { "@type": "ListItem", position: 3, name: page.heroTitle, item: canonical },
+    ],
   }
 
   return (
@@ -80,7 +88,7 @@ export default function TexasSeoLandingPage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([faqStructuredData, serviceStructuredData]),
+          __html: JSON.stringify([faqStructuredData, serviceStructuredData, breadcrumbStructuredData]),
         }}
       />
 

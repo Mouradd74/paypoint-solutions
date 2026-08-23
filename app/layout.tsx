@@ -23,28 +23,38 @@ const caveat = Caveat({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Paypoint Solutions | Texas Payment Processing & POS",
+    default: "Texas Payment Processing & Zero-Fee POS Systems | Paypoint Solutions",
     template: "%s | Paypoint Solutions",
   },
   description:
-    "Payment processing, POS systems, and card terminals for Texas businesses. Local support in Seguin and neighboring cities.",
+    "Zero-fee payment processing, free POS systems, and card terminals for Texas businesses. Local, in-person support in Seguin, New Braunfels, San Marcos & beyond.",
+  applicationName: "Paypoint Solutions",
+  authors: [{ name: "Paypoint Solutions" }],
+  keywords: [
+    "payment processing Texas",
+    "zero fee credit card processing",
+    "POS systems Seguin TX",
+    "free POS terminal",
+    "cash discount program Texas",
+  ],
   generator: "Paypoint Solutions",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
-    title: "Paypoint Solutions | Texas Payment Processing & POS",
+    title: "Texas Payment Processing & Zero-Fee POS Systems | Paypoint Solutions",
     description:
-      "Payment processing, POS systems, and card terminals for Texas businesses. Local support in Seguin and neighboring cities.",
+      "Zero-fee payment processing, free POS systems, and card terminals for Texas businesses. Local, in-person support in Seguin and beyond.",
     url: siteUrl,
     siteName: "Paypoint Solutions",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Paypoint Solutions | Texas Payment Processing & POS",
+    title: "Texas Payment Processing & Zero-Fee POS Systems | Paypoint Solutions",
     description:
-      "Payment processing, POS systems, and card terminals for Texas businesses. Local support in Seguin and neighboring cities.",
+      "Zero-fee payment processing, free POS systems, and card terminals for Texas businesses. Local, in-person support in Seguin and beyond.",
   },
   icons: {
     icon: [

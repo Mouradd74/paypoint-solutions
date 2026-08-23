@@ -1,5 +1,4 @@
-"use client"
-
+import type { Metadata } from "next"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import Aurora from "@/components/Aurora"
 import { Footer } from "@/components/footer"
@@ -9,6 +8,15 @@ import { TyreKickersSection } from "@/components/tyre-kickers-section"
 import { InstagramServiceSection } from "@/components/instagram-service-section"
 import { OmnichannelSection } from "@/components/omnichannel-section"
 import { WhatsAppDemoSection } from "@/components/whatsapp-demo-section"
+
+export const metadata: Metadata = {
+  title: "Payment Processing for Car Dealerships in Texas",
+  description:
+    "Buy-here-pay-here payment collection, card processing, and POS tools built for independent Texas car dealerships.",
+  alternates: {
+    canonical: "/car-dealerships",
+  },
+}
 
 export default function CarDealershipsPage() {
   return (

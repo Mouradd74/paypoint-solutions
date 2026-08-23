@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { allPartners } from "@/lib/partners-data"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
@@ -5,6 +6,11 @@ import { Footer } from "@/components/footer"
 import Aurora from "@/components/Aurora"
 import Link from "next/link"
 import { ArrowLeft, CheckCircle } from "lucide-react"
+import { siteUrl } from "@/lib/site"
+
+type PageProps = {
+  params: { id: string }
+}
 
 export function generateStaticParams() {
   return allPartners.map((partner) => ({
@@ -12,7 +18,33 @@ export function generateStaticParams() {
   }))
 }
 
-export default function PartnerPage({ params }: { params: { id: string } }) {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const partner = allPartners.find((p) => p.id === params.id)
+  if (!partner) {
+    return {}
+  }
+
+  const title = `${partner.name} POS & Payments Setup in Texas`
+  const description =
+    partner.desc ||
+    `${partner.name} setup, training, and local support for Texas businesses from Paypoint Solutions.`
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/partners/${partner.id}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `${siteUrl}/partners/${partner.id}`,
+      type: "website",
+    },
+  }
+}
+
+export default function PartnerPage({ params }: PageProps) {
   const partner = allPartners.find((p) => p.id === params.id)
 
   if (!partner) {

@@ -1,4 +1,4 @@
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://paypointsolutions-tex.com"
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.paypointsolutions-tex.com"
 
 export const primaryServiceAreas = [
   "Seguin",

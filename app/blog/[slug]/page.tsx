@@ -38,6 +38,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: post.description,
       url: canonical,
       type: "article",
+      publishedTime: post.date,
+      modifiedTime: post.date,
     },
   }
 }
@@ -48,6 +50,8 @@ export default function BlogPostPage({ params }: PageProps) {
     notFound()
   }
 
+  const canonical = `${siteUrl}/blog/${post.slug}`
+
   const articleStructuredData = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -56,17 +60,33 @@ export default function BlogPostPage({ params }: PageProps) {
     datePublished: post.date,
     dateModified: post.date,
     author: {
-      "@type": "Organization",
-      name: "Paypoint Solutions",
+      "@type": "Person",
+      name: "Matthew",
+      jobTitle: "Merchant Services Provider",
+      worksFor: { "@id": `${siteUrl}/#business` },
     },
     publisher: {
       "@type": "Organization",
       name: "Paypoint Solutions",
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/images/PPlogo.webp`,
+      },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${siteUrl}/blog/${post.slug}`,
+      "@id": canonical,
     },
+  }
+
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${siteUrl}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: canonical },
+    ],
   }
 
   return (
@@ -74,7 +94,7 @@ export default function BlogPostPage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(articleStructuredData),
+          __html: JSON.stringify([articleStructuredData, breadcrumbStructuredData]),
         }}
       />
       <main className="min-h-screen relative overflow-hidden">

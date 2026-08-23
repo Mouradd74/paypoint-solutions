@@ -17,15 +17,27 @@ export default function HomePage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": `${siteUrl}/#business`,
     name: "Paypoint Solutions",
     url: siteUrl,
+    image: `${siteUrl}/images/PPlogo.webp`,
+    logo: `${siteUrl}/images/PPlogo.webp`,
     telephone: "+1-830-318-3250",
-    areaServed: primaryServiceAreas,
+    email: "paypointsolutions1@gmail.com",
+    areaServed: primaryServiceAreas.map((city) => ({
+      "@type": "City",
+      name: city,
+    })),
     address: {
       "@type": "PostalAddress",
       addressLocality: "Seguin",
       addressRegion: "TX",
       addressCountry: "US",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 29.5688,
+      longitude: -97.9554,
     },
     sameAs: [
       "https://www.instagram.com/feeassasintx",
@@ -38,6 +50,10 @@ export default function HomePage() {
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Payment Processing" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "POS Systems" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Credit Card Terminals" } },
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Cash Discount Programs" },
+        },
       ],
     },
   }
@@ -47,6 +63,9 @@ export default function HomePage() {
     "@type": "WebSite",
     name: "Paypoint Solutions",
     url: siteUrl,
+    publisher: {
+      "@id": `${siteUrl}/#business`,
+    },
   }
 
   const servicesStructuredData = [
@@ -54,11 +73,7 @@ export default function HomePage() {
       "@context": "https://schema.org",
       "@type": "Service",
       name: "Payment Processing",
-      provider: {
-        "@type": "LocalBusiness",
-        name: "Paypoint Solutions",
-        url: siteUrl,
-      },
+      provider: { "@id": `${siteUrl}/#business` },
       areaServed: primaryServiceAreas,
       description: "Payment processing setup and support for Texas businesses.",
     },
@@ -66,11 +81,7 @@ export default function HomePage() {
       "@context": "https://schema.org",
       "@type": "Service",
       name: "POS Systems",
-      provider: {
-        "@type": "LocalBusiness",
-        name: "Paypoint Solutions",
-        url: siteUrl,
-      },
+      provider: { "@id": `${siteUrl}/#business` },
       areaServed: primaryServiceAreas,
       description: "POS system installations for retail, restaurants, and service businesses.",
     },
@@ -78,30 +89,9 @@ export default function HomePage() {
       "@context": "https://schema.org",
       "@type": "Service",
       name: "Cash Discount Programs",
-      provider: {
-        "@type": "LocalBusiness",
-        name: "Paypoint Solutions",
-        url: siteUrl,
-      },
+      provider: { "@id": `${siteUrl}/#business` },
       areaServed: primaryServiceAreas,
       description: "Zero-fee and cash discount payment programs with compliant setup.",
-    },
-  ]
-
-  const productsStructuredData = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      name: "Credit card terminals",
-      description: "EMV and contactless credit card terminals with encryption and reporting.",
-      brand: "Paypoint Solutions",
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      name: "POS hardware bundles",
-      description: "POS terminals, receipt printers, cash drawers, and accessories for Texas merchants.",
-      brand: "Paypoint Solutions",
     },
   ]
 
@@ -114,7 +104,6 @@ export default function HomePage() {
             structuredData,
             websiteStructuredData,
             ...servicesStructuredData,
-            ...productsStructuredData,
           ]),
         }}
       />

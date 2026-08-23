@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: page.title,
       description: page.description,
       url: canonical,
-      type: "article",
+      type: "website",
     },
   }
 }
@@ -47,6 +47,8 @@ export default function CitySeoPage({ params }: PageProps) {
   if (!page) {
     notFound()
   }
+
+  const canonical = `${siteUrl}/texas/cities/${page.slug}`
 
   const faqStructuredData = {
     "@context": "https://schema.org",
@@ -64,14 +66,34 @@ export default function CitySeoPage({ params }: PageProps) {
   const serviceStructuredData = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "POS systems and payment processing",
-    provider: {
-      "@type": "LocalBusiness",
-      name: "Paypoint Solutions",
-      url: siteUrl,
+    name: `POS systems and payment processing in ${page.city}, TX`,
+    provider: { "@id": `${siteUrl}/#business` },
+    areaServed: {
+      "@type": "City",
+      name: `${page.city}, TX`,
     },
-    areaServed: page.city,
     description: page.description,
+  }
+
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "Texas POS Guides", item: `${siteUrl}/texas` },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Service Areas",
+        item: `${siteUrl}/texas/cities`,
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: `${page.city}, TX Payment Processing`,
+        item: canonical,
+      },
+    ],
   }
 
   return (
@@ -79,7 +101,7 @@ export default function CitySeoPage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([faqStructuredData, serviceStructuredData]),
+          __html: JSON.stringify([faqStructuredData, serviceStructuredData, breadcrumbStructuredData]),
         }}
       />
 

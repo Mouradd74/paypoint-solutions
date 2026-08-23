@@ -1,16 +1,32 @@
-"use client"
-
-import Script from "next/script"
 import Link from "next/link"
+import Script from "next/script"
 import Aurora from "@/components/Aurora"
 import { GlassmorphismNav } from "@/components/glassmorphism-nav"
 import { Footer } from "@/components/footer"
+import { blogPosts } from "@/lib/seo-data"
+import type { Metadata } from "next"
 
-// Note: metadata export requires this to stay a Server Component.
-// If you keep "use client" above for the Script logic, move metadata
-// to a separate layout.tsx or generateMetadata in a parent server component.
+export const metadata: Metadata = {
+  title: "Payment Processing Blog for Texas Businesses",
+  description:
+    "Practical guides on POS systems, credit card terminals, zero-fee processing, and cash discount programs for Texas merchants.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Payment Processing Blog for Texas Businesses",
+    description:
+      "Practical guides on POS systems, credit card terminals, zero-fee processing, and cash discount programs for Texas merchants.",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.paypointsolutions-tex.com"}/blog`,
+    type: "website",
+  },
+}
 
 export default function BlogIndexPage() {
+  const sortedPosts = [...blogPosts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  )
+
   return (
     <div className="min-h-screen bg-black overflow-hidden">
       <main className="min-h-screen relative overflow-hidden">
@@ -36,6 +52,28 @@ export default function BlogIndexPage() {
             </div>
           </section>
 
+          <section className="px-6 pb-16">
+            <div className="max-w-5xl mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {sortedPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group rounded-3xl border border-white/10 bg-white/5 p-6 text-white transition-colors hover:border-white/30"
+                >
+                  <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.2em] text-white/50">
+                    <span>{post.category}</span>
+                    <span>{post.date}</span>
+                  </div>
+                  <h2 className="mt-3 text-xl font-semibold group-hover:text-emerald-300 transition-colors">
+                    {post.title}
+                  </h2>
+                  <p className="mt-3 text-sm text-white/70">{post.description}</p>
+                  <p className="mt-4 text-xs text-white/50">{post.readTime}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+
           <section className="px-6 pb-20">
             <div className="max-w-5xl mx-auto text-white soro-embed-wrapper">
               <div id="soro-blog" />
@@ -51,6 +89,4 @@ export default function BlogIndexPage() {
       </main>
     </div>
   )
-
-  
-} 
+}
