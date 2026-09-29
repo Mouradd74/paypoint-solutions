@@ -9,6 +9,7 @@ const BOOKING_IFRAME_ID = "F11K8noWpRzUtgqGxSfe_1790628653929"
 export function ROICalculatorSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const [scriptFailed, setScriptFailed] = useState(false)
   const [activeTab, setActiveTab] = useState<"ecommerce" | "markets" | "supermarkets" | "Other Stores">("ecommerce")
   const industryOptions = [
     { value: "ecommerce", label: "E-Commerce", Icon: ShoppingCart },
@@ -38,16 +39,27 @@ export function ROICalculatorSection() {
   }, [])
 
   // Load LeadConnectorHQ booking widget script (form_embed.js handles iframe resizing)
+  // Robust: handle ad-blockers, slow networks, and ensure it loads after iframe is mounted
   useEffect(() => {
     const id = "leadconnector-booking-script"
-    if (!document.getElementById(id)) {
-      const script = document.createElement("script")
-      script.id = id
-      script.src = "https://link.msgsndr.com/js/form_embed.js"
-      script.async = true
-      script.type = "text/javascript"
-      document.body.appendChild(script)
-    }
+    if (document.getElementById(id)) return
+    const script = document.createElement("script")
+    script.id = id
+    script.src = "https://link.msgsndr.com/js/form_embed.js"
+    script.async = true
+    script.type = "text/javascript"
+    script.onerror = () => setScriptFailed(true)
+    // if script doesn't load in 4s (blocked), show fallback
+    const timer = window.setTimeout(() => {
+      if (!document.getElementById(id)?.getAttribute("data-loaded")) {
+        // script may be blocked by ad-blocker
+        const stillMissing = !document.querySelector(`script[src="${script.src}"]`)
+        if (stillMissing) setScriptFailed(true)
+      }
+    }, 4000)
+    script.onload = () => script.setAttribute("data-loaded", "true")
+    document.body.appendChild(script)
+    return () => window.clearTimeout(timer)
   }, [])
 
   return (
@@ -253,10 +265,34 @@ export function ROICalculatorSection() {
               scrolling="no"
               id={BOOKING_IFRAME_ID}
               title="Book a consultation - Paypoint Solutions"
-              loading="lazy"
+              loading="eager"
               allow="payment"
+              referrerPolicy="strict-origin-when-cross-origin"
               className="w-full min-h-[720px] rounded-xl bg-white block"
+              onError={() => setScriptFailed(true)}
             />
+            {/* Fallback for ad-blockers / iframe blocking — always visible as backup */}
+            <div className="px-4 py-3 bg-white rounded-xl mt-2 flex flex-col sm:flex-row items-center justify-center gap-3 text-sm">
+              <span className="text-gray-600 text-center">
+                {scriptFailed ? "Booking blocked by ad-blocker?" : "Having trouble loading the calendar?"}
+              </span>
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-black text-white font-medium hover:bg-zinc-800 transition-colors shrink-0"
+              >
+                Open booking in new tab
+                <CheckCircle2 className="w-4 h-4" />
+              </a>
+            </div>
+            <noscript>
+              <div className="p-4 text-center bg-white rounded-xl mt-2">
+                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-black underline">
+                  Open booking calendar
+                </a>
+              </div>
+            </noscript>
           </div>
         </div>
 
