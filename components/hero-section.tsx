@@ -25,6 +25,8 @@ const ChevronDown = () => (
   </svg>
 )
 
+const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/F11K8noWpRzUtgqGxSfe"
+
 export function HeroSection() {
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center px-4 py-20 relative">
@@ -78,9 +80,12 @@ export function HeroSection() {
             size="lg"
             className="bg-emerald-500 text-white rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:bg-emerald-600 hover:scale-105 hover:shadow-lg group cursor-pointer relative overflow-hidden"
             onClick={() => {
-              const el = document.getElementById("calendly-embed")
+              const el =
+                document.getElementById("booking-embed") ||
+                document.getElementById("calendly-embed") ||
+                document.getElementById("book")
               if (el) {
-                el.scrollIntoView({ behavior: "smooth", block: "center" })
+                el.scrollIntoView({ behavior: "smooth", block: "start" })
                 // focus after a small delay so the browser completes scrolling
                 setTimeout(() => {
                   try {
@@ -92,14 +97,8 @@ export function HeroSection() {
                 return
               }
 
-              // fallback: open Calendly popup if widget isn't present yet
-              const calendly = (window as any).Calendly
-              if (calendly?.initPopupWidget) {
-                calendly.initPopupWidget({ url: "https://calendly.com/paypointsolutions1/30min" })
-                return
-              }
-
-              window.open("https://calendly.com/paypointsolutions1/30min", "_blank", "noopener,noreferrer")
+              // fallback: open booking page directly if embed not found
+              window.open(BOOKING_URL, "_blank", "noopener,noreferrer")
             }}
           >
             Schedule a Call

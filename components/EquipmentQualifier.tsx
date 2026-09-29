@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react"
 import { ArrowRight, CheckCircle2 } from "lucide-react"
 
-const CAL_URL = "https://calendly.com/paypointsolutions1/30min"
+const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/F11K8noWpRzUtgqGxSfe"
 
 type VolumeOption = {
   label: string
@@ -60,24 +60,15 @@ export function EquipmentQualifier() {
   const [submitState, setSubmitState] = useState<"idle" | "submitting" | "success" | "error">("idle")
 
   useEffect(() => {
-    const id = "calendly-widget-script"
-    let script = document.getElementById(id) as HTMLScriptElement | null
-
-    if (!script) {
-      script = document.createElement("script")
+    // Ensure LeadConnectorHQ booking script is present (shared with ROICalculatorSection)
+    const id = "leadconnector-booking-script"
+    if (!document.getElementById(id)) {
+      const script = document.createElement("script")
       script.id = id
-      script.src = "https://assets.calendly.com/assets/external/widget.js"
+      script.src = "https://link.msgsndr.com/js/form_embed.js"
       script.async = true
+      script.type = "text/javascript"
       document.body.appendChild(script)
-    }
-
-    const cssId = "calendly-widget-css"
-    if (!document.getElementById(cssId)) {
-      const link = document.createElement("link")
-      link.id = cssId
-      link.rel = "stylesheet"
-      link.href = "https://assets.calendly.com/assets/external/widget.css"
-      document.head.appendChild(link)
     }
   }, [])
 
@@ -168,17 +159,17 @@ export function EquipmentQualifier() {
     }
   }
 
-  const openCalendly = () => {
-    const calendly = (window as Window & {
-      Calendly?: { initPopupWidget: (options: { url: string }) => void }
-    }).Calendly
-
-    if (calendly?.initPopupWidget) {
-      calendly.initPopupWidget({ url: CAL_URL })
+  const openBooking = () => {
+    // Prefer scrolling to the inline booking widget (matches hero Schedule button)
+    const target =
+      document.getElementById("booking-embed") ||
+      document.getElementById("calendly-embed") ||
+      document.getElementById("book")
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" })
       return
     }
-
-    window.open(CAL_URL, "_blank", "noopener,noreferrer")
+    window.open(BOOKING_URL, "_blank", "noopener,noreferrer")
   }
 
   return (
@@ -316,7 +307,7 @@ export function EquipmentQualifier() {
 
               <button
                 type="button"
-                onClick={openCalendly}
+                onClick={openBooking}
                 className="relative bg-transparent border border-white/20 hover:bg-white/10 text-white font-medium px-7 py-3 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer group touch-manipulation"
               >
                 <span className="mr-2">Book a Free Consultation</span>

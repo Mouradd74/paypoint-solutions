@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from "react"
 import { CheckCircle2, FileText, ShoppingCart, Store, ShieldCheck } from "lucide-react"
 
-const CAL_URL = "https://calendly.com/paypointsolutions1/30min"
+const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/F11K8noWpRzUtgqGxSfe"
+const BOOKING_IFRAME_ID = "F11K8noWpRzUtgqGxSfe_1790628653929"
 
 export function ROICalculatorSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -36,24 +37,16 @@ export function ROICalculatorSection() {
     return () => observer.disconnect()
   }, [])
 
-  // Load Calendly widget script
+  // Load LeadConnectorHQ booking widget script (form_embed.js handles iframe resizing)
   useEffect(() => {
-    const id = "calendly-widget-script"
-    let script = document.getElementById(id) as HTMLScriptElement | null
-    if (!script) {
-      script = document.createElement("script")
+    const id = "leadconnector-booking-script"
+    if (!document.getElementById(id)) {
+      const script = document.createElement("script")
       script.id = id
-      script.src = "https://assets.calendly.com/assets/external/widget.js"
+      script.src = "https://link.msgsndr.com/js/form_embed.js"
       script.async = true
+      script.type = "text/javascript"
       document.body.appendChild(script)
-    }
-    const cssId = "calendly-widget-css"
-    if (!document.getElementById(cssId)) {
-      const link = document.createElement("link")
-      link.id = cssId
-      link.rel = "stylesheet"
-      link.href = "https://assets.calendly.com/assets/external/widget.css"
-      document.head.appendChild(link)
     }
   }, [])
 
@@ -243,21 +236,26 @@ export function ROICalculatorSection() {
           </div>
         </div>
 
-        {/* Calendly Widget */}
+        {/* Booking Widget - LeadConnectorHQ (replaces Calendly) */}
         <div
           className={`transition-all duration-700 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <div
             ref={sectionRef}
-            className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl overflow-hidden"
+            id="booking-embed"
+            className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl overflow-hidden p-1 md:p-2"
           >
-            <div
-              id="calendly-embed"
-              className="calendly-inline-widget"
-              data-url={CAL_URL}
-              style={{ minWidth: "320px", height: "720px" }}
-              aria-label="Calendly scheduling widget"
-              tabIndex={-1}
+            {/* legacy anchor for old links that pointed to #calendly-embed */}
+            <span id="calendly-embed" className="sr-only" aria-hidden="true" />
+            <iframe
+              src={BOOKING_URL}
+              style={{ width: "100%", border: "none", overflow: "hidden" }}
+              scrolling="no"
+              id={BOOKING_IFRAME_ID}
+              title="Book a consultation - Paypoint Solutions"
+              loading="lazy"
+              allow="payment"
+              className="w-full min-h-[720px] rounded-xl bg-white block"
             />
           </div>
         </div>
